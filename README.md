@@ -174,14 +174,10 @@ PokéAPI provides the Pokémon, species, and type information used throughout th
 - Species endpoint: `https://pokeapi.co/api/v2/pokemon-species/`
 - Type endpoint: `https://pokeapi.co/api/v2/type/`
 
-## Disclaimer
+## ⚖️ Disclaimer & License
 
-This project is a fan-made educational project and is not affiliated with or endorsed by Nintendo, Game Freak, or The Pokémon Company.
+## ⚖️ Disclaimer
 
-Pokémon and related properties are trademarks of their respective owners.
+This application is an unofficial, fan-made educational project created for portfolio and demonstration purposes. It is not affiliated with, endorsed by, sponsored by, or associated with Nintendo, Game Freak, or The Pokémon Company.
 
-## License
-
-This project was created for educational and portfolio purposes. All original code in this repository is my own unless otherwise noted.
-
-Pokémon-related names, images, and data belong to their respective owners and are used for educational purposes.
+Pokémon and all related names, characters, artwork, and trademarks are the property of their respective owners. Pokémon data used by this application is retrieved from [PokéAPI](https://pokeapi.co/).
