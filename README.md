@@ -1,71 +1,286 @@
-# pokemon-team-builder
-A dynamic Pokedex web application built with PHP, HTML5, CSS, and JavaScript that allows users to search for Pokémon and build custom teams. 
+PokeDex
 
-# Pokémon Team Builder & Pokédex
+A PHP-based Pokédex web application that allows users to search for Pokémon, filter Pokémon by type, generate random Pokémon, and build teams of up to six Pokémon with basic team strength and weakness analysis.
 
-A responsive, full-stack web application functioning as an interactive Pokédex, type analyzer, and custom strategic squad builder. Users can search for individual entries, filter random selections by type, or construct custom teams. The backend features a matrix evaluation engine that dynamically calculates team-wide defensive weaknesses and offensive type advantages.
+This project was created as a final project to demonstrate web development using PHP, HTML, CSS, and JavaScript, as well as working with an external REST API.
 
-This repository serves as a portfolio piece demonstrating core development competencies: server-side business logic, client-side input interceptors, clean data normalization structures, and real-time remote REST API integration.
+Note: This repository contains the source code for the project. The application is not currently deployed or hosted online.
 
-## Features
-- **Targeted Lookup:** Query data dynamically via an individual Pokémon's name or numerical index ID (e.g., `Mewtwo` or `150`).
-- **Type-Filtered Generator:** Stream an unexpected squad of up to six random elements belonging exclusively to a user-selected type.
-- **"Surprise Me" Engine:** Instantly roll 6 completely randomized Pokémon spanning IDs 1 through 1025.
-- **Custom Squad Workspace:** A responsive input workspace accepting up to 6 unique dataset targets concurrently to build customized battle teams.
-- **Algorithmic Strategy Analysis:** Processes batch inputs to cross-analyze overlapping defensive vulnerabilities and offensive competitive type match-ups.
-- **Regional Mapping Logic:** Automatically maps API generation parameters (`generation-i` through `generation-ix`) to recognizable in-game regions (Kanto through Paldea).
-- **Context-Aware Navigation UI:** Dynamically adapts primary layout interactions and back-buttons based on state-routing parameters (`$_GET['source']`), guiding users smoothly back to their precise workflow origin.
-- **Fail-Safe Client Validation:** Blocks malformed inputs instantly on the client side using Regular Expression matching to preserve network bandwidth.
+Features
+Pokémon Search
 
-## Tech Stack
-- **Backend Architecture:** PHP (Procedural execution, custom mapping arrays, nested loop arrays, data streams via `file_get_contents`)
-- **Data Transport Layer:** JSON-decoded data payloads (`json_decode`) interacting live with the open-source [PokeAPI](https://pokeapi.co)
-- **Frontend Layer:** HTML5, CSS3, Vanilla JavaScript (Regular Expression testing, inline DOM rendering, native event listeners)
+Search for a Pokémon by name or Pokédex ID.
 
-## Project Architecture
-```text
-├── index.php                # Welcome portal containing core navigation cards
-├── search.php               # Form elements handling single inputs and dropdown filters
-├── results.php              # Individual lookup rendering engine and region router
-├── team.php                 # Dynamic 6-slot array submission form
-├── teamresults.php          # Algorithmic strategy evaluation matrix & roster renderer
-├── error.php                # URL-decoded defensive catching landing page
-├── style.css                # Global responsive grid layouts and aesthetic components
-└── script.js                # Frontend input constraints and normalization logic
-```
+Retrieve Pokémon information from the PokéAPI
+.
 
-## Core Technical Implementation Details
+Display:
 
-### The Strategy Analysis Matrix Algorithm (`teamresults.php`)
-Rather than simply listing raw stats, the backend computes team-wide tactical traits using a dedicated parsing algorithm:
-* **Asynchronous Multi-Threading Hooks:** For each user-submitted squad member, the server extracts its type array and initiates follow-up operations to `/api/v2/type/{name}` to extract `damage_relations`.
-* **Deduplication Matrix:** Uses associative tracking variables (`$pokeWeaknesses`, `$pokeStrengths`) to prevent dual-type Pokémon from double-counting identical vulnerabilities or advantages.
-* **Dynamic Ceiling Thresholds:** Calculates a math threshold based on the actual size of the submitted team using standard rounding functions:
-  
-  \[\text{Threshold} = \lceil \text{Team Size} \times 0.5 \rceil\]
-  
-* If 50% or more of the active team shares an identical structural trait (`double_damage_from` or `double_damage_to`), the platform isolates and labels the vulnerability/strength for end-user analysis.
+Pokédex number
 
-### Batch Form Input Processing (`team.php` → `teamresults.php`)
-* Implements HTML array structures (`name="team[]"`) across the custom planning view.
-* This allows the backend to collect, organize, and loop through multiple text field elements seamlessly as an indexed list without needing separate variable names for each slot.
+Pokémon name
 
-### Client-Side Interceptors (`script.js`)
-* Hooks cleanly into native form submissions using the `onsubmit` controller.
-* Implements a strict validation constraint logic (`/^[a-zA-Z0-9-]+$/`) ensuring entries use only letters, digits, or dashes before sending data across the network.
-* Automates normalization by converting string casing to lowercase inline, directly matching the input rules required by remote REST endpoint queries.
+Pokémon types
 
-### Defensive Programming & Security
-* **Cross-Site Scripting (XSS) Mitigation:** Employs explicit string sanitization protocols (`htmlspecialchars()`) on user-controlled input messages before rendering them into the browser DOM, neutralizing injection vulnerabilities from malicious query parameters.
-* **Silent Runtime Handling:** Leverages silent execution markers (`@file_get_contents`) to prevent PHP errors from leaking configuration file paths onto the user screen if a network request fails.
-* **Query Safety Redirects:** Reroutes missing or malformed lookups dynamically to a safe landing view using URL encoded query structures (`urlencode`).
+Base stats
 
-## 💻 Local Setup & Execution
-Because this application relies on server-side PHP data handling, it requires a local runtime environment:
-1. Clone the repository into your public HTML folder:
-   ```bash
-   git clone https://github.com
-   ```
-2. Launch your local tool stack (such as **XAMPP**, **MAMP**, or **WampServer**).
-3. Ensure the Apache server module is running cleanly.
-4. Open your web browser and navigate to: `http://localhost/pokemon-team-builder/index.php`
+Region
+
+Generation
+
+Pokémon sprite
+
+🎲 Random Pokémon
+
+Generate six random Pokémon.
+
+Random Pokémon are selected using PokéAPI data.
+
+Randomization can be accessed from the home page or the search page.
+
+Type Filtering
+
+Filter Pokémon by type using a dropdown menu.
+
+Supported types include all 18 standard Pokémon types.
+
+Six Pokémon are randomly selected from the chosen type.
+
+Team Builder
+
+Build a team of up to six Pokémon.
+
+Pokémon can be entered individually into six team slots.
+
+Team members are retrieved from PokéAPI.
+
+The application analyzes the team's shared type strengths and weaknesses.
+
+Team Analysis
+
+The team analyzer examines the types of each Pokémon and determines shared strengths and weaknesses.
+
+A type is considered a team-wide trait when at least 50% of the Pokémon on the team share that strength or weakness.
+
+For example:
+
+3 Pokémon on your team are weak to Ice type moves.
+
+The analysis also displays each team member's:
+
+Pokédex number
+
+Name
+
+Types
+
+Base stats
+
+Sprite
+
+Input Validation & Error Handling
+
+Client-side JavaScript validation is used before requests are submitted.
+
+The application checks for:
+
+Empty search fields
+
+Invalid characters
+
+Empty teams
+
+Invalid Pokémon names
+
+Failed API requests
+
+Invalid Pokémon searches are redirected to a dedicated error page with an appropriate message and a link back to the relevant section of the application.
+
+Technologies Used
+
+PHP — Server-side application logic, API requests, data processing, and team analysis
+
+HTML5 — Page structure and forms
+
+CSS3 — Layout and visual styling
+
+JavaScript — Client-side input validation
+
+PokéAPI — External REST API used to retrieve Pokémon, species, and type information
+
+How It Works
+
+The application uses PokéAPI
+ as its primary data source.
+
+When a user searches for a Pokémon, the application sends a request to the Pokémon endpoint:
+
+https://pokeapi.co/api/v2/pokemon/{name-or-id}
+
+
+The returned JSON data is decoded by PHP and used to generate the results page.
+
+For team analysis, the application:
+
+Retrieves each Pokémon submitted by the user.
+
+Determines each Pokémon's type or types.
+
+Retrieves the corresponding type data from PokéAPI.
+
+Collects each Pokémon's type strengths and weaknesses.
+
+Counts how many team members share each strength or weakness.
+
+Identifies traits shared by at least 50% of the team.
+
+Displays the resulting team analysis.
+
+Project Structure
+PokeDex/
+│
+├── index.php          # Home page
+├── search.php         # Pokémon search and filtering interface
+├── results.php        # Displays Pokémon search/randomizer results
+├── team.php           # Team-building interface
+├── teamresults.php    # Team analysis and team results
+├── error.php          # Error handling and user feedback
+│
+├── script.js          # Client-side form validation
+├── style.css          # Application styling
+├── pokeball.png       # Home page image asset
+│
+└── README.md          # Project documentation
+
+Pages
+File	Purpose
+index.php	Main landing page with links to search, randomizer, and team builder
+search.php	Allows users to search by Pokémon name/ID or filter by type
+results.php	Retrieves and displays Pokémon information from PokéAPI
+team.php	Provides six slots for creating a Pokémon team
+teamresults.php	Analyzes the team's shared strengths and weaknesses
+error.php	Displays search/team errors and provides navigation back to the appropriate page
+script.js	Handles client-side input validation
+style.css	Contains the application's visual styling
+pokeball.png	Image asset used on the home page
+Running the Project Locally
+
+Because this project uses PHP, it needs to be run through a PHP-enabled local server rather than opened directly as an HTML file.
+
+Requirements
+
+PHP
+
+A local PHP development server such as:
+
+PHP's built-in development server
+
+XAMPP
+
+MAMP
+
+Another PHP-compatible web server
+
+Internet connection for PokéAPI requests
+
+Using PHP's Built-In Server
+
+Clone the repository:
+
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+
+
+Navigate into the project directory:
+
+cd PokeDex
+
+
+Start the PHP development server:
+
+php -S localhost:8000
+
+
+Then open:
+
+http://localhost:8000
+
+
+The application requires an internet connection because Pokémon data is retrieved from PokéAPI at runtime.
+
+API
+
+This project uses PokéAPI, a free RESTful Pokémon API.
+
+PokéAPI provides the Pokémon, species, and type information used throughout the application.
+
+Website: https://pokeapi.co/
+
+Pokémon endpoint: https://pokeapi.co/api/v2/pokemon/
+
+Species endpoint: https://pokeapi.co/api/v2/pokemon-species/
+
+Type endpoint: https://pokeapi.co/api/v2/type/
+
+What I Learned
+
+This project provided experience with:
+
+Building a multi-page PHP web application
+
+Working with REST APIs
+
+Parsing JSON responses in PHP
+
+Sending and processing GET parameters
+
+Creating dynamic HTML using PHP
+
+Client-side form validation with JavaScript
+
+Server-side API requests
+
+Processing nested API data
+
+Working with arrays and associative arrays in PHP
+
+Designing reusable navigation and page layouts
+
+Handling invalid user input and API failures
+
+Implementing basic data analysis from API results
+
+Organizing a web project into separate frontend and backend responsibilities
+
+Future Improvements
+
+Potential improvements for a future version include:
+
+Add more detailed Pokémon information such as abilities, moves, and evolutions.
+
+Improve the team analysis to account for Pokémon with multiple types more precisely.
+
+Add type coverage calculations and identify gaps in a team's offensive coverage.
+
+Prevent duplicate Pokémon from being added to a team.
+
+Add Pokémon search autocomplete.
+
+Improve API error handling and loading states.
+
+Add caching to reduce the number of API requests.
+
+Improve accessibility and responsive design.
+
+Add a more advanced team-building interface with Pokémon selection cards.
+
+Disclaimer
+
+This project is a fan-made educational project and is not affiliated with or endorsed by Nintendo, Game Freak, or The Pokémon Company.
+
+Pokémon and related properties are trademarks of their respective owners.
+
+License
+
+This repository contains original code written for educational and portfolio purposes.
+
+If you reuse or modify this project, please provide appropriate attribution.
