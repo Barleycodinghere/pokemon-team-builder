@@ -1,4 +1,4 @@
-# PokeDex
+# Pokémon Team Builder & Pokédex
 
 A PHP-based Pokédex web application that allows users to search for Pokémon, filter Pokémon by type, generate random Pokémon, and build teams of up to six Pokémon with basic team strength and weakness analysis.
 
@@ -105,7 +105,7 @@ For team analysis, the application:
 ## Project Structure
 
 ```text
-PokeDex/
+pokemon-team-builder/
 │
 ├── index.php          # Home page
 ├── search.php         # Pokémon search and filtering interface
@@ -120,19 +120,6 @@ PokeDex/
 │
 └── README.md          # Project documentation
 ```
-## Pages
-
-| File | Purpose |
-|---|---|
-| `index.php` | Main landing page with links to search, randomizer, and team builder |
-| `search.php` | Allows users to search by Pokémon name/ID or filter by type |
-| `results.php` | Retrieves and displays Pokémon information from PokéAPI |
-| `team.php` | Provides six slots for creating a Pokémon team |
-| `teamresults.php` | Analyzes the team's shared strengths and weaknesses |
-| `error.php` | Displays search/team errors and provides navigation back to the appropriate page |
-| `script.js` | Handles client-side input validation |
-| `style.css` | Contains the application's visual styling |
-| `pokeball.png` | Image asset used on the home page |
 
 ## Running the Project Locally
 
