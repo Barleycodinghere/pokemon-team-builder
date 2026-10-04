@@ -187,38 +187,6 @@ PokéAPI provides the Pokémon, species, and type information used throughout th
 - Species endpoint: `https://pokeapi.co/api/v2/pokemon-species/`
 - Type endpoint: `https://pokeapi.co/api/v2/type/`
 
-## What I Learned
-
-This project provided experience with:
-
-- Building a multi-page PHP web application
-- Working with REST APIs
-- Parsing JSON responses in PHP
-- Sending and processing GET parameters
-- Creating dynamic HTML using PHP
-- Client-side form validation with JavaScript
-- Server-side API requests
-- Processing nested API data
-- Working with arrays and associative arrays in PHP
-- Designing reusable navigation and page layouts
-- Handling invalid user input and API failures
-- Implementing basic data analysis from API results
-- Organizing a web project into separate frontend and backend responsibilities
-
-## Future Improvements
-
-Potential improvements for a future version include:
-
-- Add more detailed Pokémon information such as abilities, moves, and evolutions.
-- Improve the team analysis to account for Pokémon with multiple types more precisely.
-- Add type coverage calculations and identify gaps in a team's offensive coverage.
-- Prevent duplicate Pokémon from being added to a team.
-- Add Pokémon search autocomplete.
-- Improve API error handling and loading states.
-- Add caching to reduce the number of API requests.
-- Improve accessibility and responsive design.
-- Add a more advanced team-building interface with Pokémon selection cards.
-
 ## Disclaimer
 
 This project is a fan-made educational project and is not affiliated with or endorsed by Nintendo, Game Freak, or The Pokémon Company.
