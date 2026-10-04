@@ -174,9 +174,7 @@ PokéAPI provides the Pokémon, species, and type information used throughout th
 - Species endpoint: `https://pokeapi.co/api/v2/pokemon-species/`
 - Type endpoint: `https://pokeapi.co/api/v2/type/`
 
-## ⚖️ Disclaimer & License
-
-## ⚖️ Disclaimer
+## Disclaimer
 
 This application is an unofficial, fan-made educational project created for portfolio and demonstration purposes. It is not affiliated with, endorsed by, sponsored by, or associated with Nintendo, Game Freak, or The Pokémon Company.
 
